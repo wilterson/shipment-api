@@ -2,7 +2,7 @@ FROM node:12.14.0-alpine3.11
 
 RUN apk add --no-cache bash
 
-WORKDIR /src
+WORKDIR /home/node/app
 
 RUN npm install i npm@latest -g
 
@@ -10,7 +10,7 @@ COPY package.json package-lock*.json ./
 
 RUN npm install
 
-COPY . .
+COPY . ./
 
 EXPOSE 3000
 

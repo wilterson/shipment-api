@@ -16,6 +16,8 @@ services:
   app:
     build: .
     entrypoint: ./.docker/entrypoint.sh
+    volumes:
+      - .:/home/node/app
     ports:
       - "3000:3000"
     network_mode: "bridge"
