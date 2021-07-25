@@ -3,10 +3,11 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
+const routes = require('./routes');
+
 require('dotenv').config();
 
 const middlewares = require('./middlewares');
-const api = require('./api');
 
 const app = express();
 
@@ -17,13 +18,22 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄'
+    message: 'Shipments API'
   });
 });
 
-app.use('/api/v1', api);
+app.use('/api/v1', routes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
 module.exports = app;
+
+require('./database');
+
+const port = process.env.PORT || 3300;
+app.listen(port, () => {
+  /* eslint-disable no-console */
+  console.log(`Listening: http://localhost:${port}`);
+  /* eslint-enable no-console */
+});
