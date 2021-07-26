@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'users',
-          key: 'uuid'
+          key: 'id'
         },
         onDelete: 'CASCADE'
       },
@@ -29,21 +29,21 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      recipient: {
+      recipient_id: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'users',
-          key: 'uuid'
+          key: 'id'
         },
         onDelete: 'SET NULL'
       },
-      sender: {
+      sender_id: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'users',
-          key: 'uuid'
+          key: 'id'
         },
         onDelete: 'SET NULL'
       },

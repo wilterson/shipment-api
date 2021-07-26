@@ -6,15 +6,16 @@ class Quote extends Model {
       origin: DataTypes.JSON,
       destination: DataTypes.JSON,
       ship_date: DataTypes.DATE,
-      package_meta: DataTypes.JSON,
+      packages_meta: DataTypes.JSON,
     }, {
-      sequelize
+      sequelize,
+      modelName: 'Quote'
     });
   }
 
   static associate(models) {
-    this.hasOne(models.Shipment);
-    this.hasMany(models.Package);
+    this.hasOne(models.Shipment, { foreignKey: 'quote_id' });
+    this.hasMany(models.Package, { foreignKey: 'quote_id', as: 'packages' });
   }
 }
 

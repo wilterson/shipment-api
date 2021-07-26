@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('users',
       [
         {
-          uuid: '243944f3-b987-4939-8f3d-4d0d03d8528f',
+          id: '243944f3-b987-4939-8f3d-4d0d03d8528f',
           full_name: 'John Doe',
           email: 'user_email@hotmail.com',
           tax_id: '45657879',
@@ -29,7 +29,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          uuid: uuidv4(),
+          id: uuidv4(),
           full_name: 'Mark Doe',
           email: 'mark@hotmail.com',
           tax_id: '7894565',
@@ -53,7 +53,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          uuid: uuidv4(),
+          id: uuidv4(),
           full_name: 'JohnDoe & Cia',
           email: 'johndoe@johndoeinc.com',
           tax_id: '45677788',
@@ -77,7 +77,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          uuid: uuidv4(),
+          id: uuidv4(),
           full_name: 'Cia ltda',
           email: 'contact@cialtda.com',
           tax_id: '778789544',

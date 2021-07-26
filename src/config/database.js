@@ -1,6 +1,6 @@
 module.exports = {
   dialect: 'postgres',
-  host: '127.0.0.1',
+  host: process.env.PGHOST,
   username: 'postgres',
   password: 'docker',
   database: 'shipment_api',

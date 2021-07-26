@@ -11,12 +11,13 @@ class Package extends Model {
       items: DataTypes.JSON,
       contains: DataTypes.JSON,
     }, {
-      sequelize
+      sequelize,
+      modelName: 'Package'
     });
   }
 
   static associate(models) {
-    this.belongsToMany(models.Quote, { foreignKey: 'quote_id', as: 'packages' });
+    this.belongsTo(models.Quote);
   }
 }
 

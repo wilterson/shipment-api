@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      package_meta: {
+      packages_meta: {
         type: Sequelize.JSON,
         allowNull: false,
       },
