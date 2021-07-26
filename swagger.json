@@ -1,0 +1,226 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Shipments API",
+    "description": "A simple API to store and fetch shipments",
+    "contact": {
+      "name": "Wilterson Garcia",
+      "email": "wiltersongarcia@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Local Environment"
+    }
+  ],
+  "paths": {
+    "/shipments": {
+      "get": {
+        "summary": "Get all shipments",
+        "description": "List all shipments",
+        "tags": [ "Shipment" ],
+        "responses":  {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#/components/schemas/Shipment"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You need to be logged in to create a shipment."
+          }
+        }
+      },
+      "post": {
+        "summary": "Store a new shipment",
+        "description": "Create new shipment",
+        "tags": [ "Shipment" ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipment"
+              }
+            }
+          }
+        },
+        "responses":  {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Shipment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shipments/{id}":{
+      "get": {
+        "summary": "Get shipment by ID",
+        "description": "Get a specific shipment",
+        "tags": [ "Shipment" ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "description": "Shipment ID to search for",
+          "required": true
+        }],
+        "responses":  {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Shipment"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Shipment": {
+        "type": "object",
+        "properties": {
+          "user_uuid": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "quote": {
+            "$ref": "#/components/schemas/Quote"
+          },
+          "parcel_rate_source": {
+            "type": "string"
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/User"
+          },
+          "sender": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      },
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "ship_date": {
+            "type": "string"
+          },
+          "packages": {
+            "type": "array",
+            "$ref": "#/components/schemas/Package"
+          },
+          "packages_meta": {
+            "type": "object"
+          }
+        }
+      },
+      "Package": {
+        "type": "object",
+        "properties": {
+          "weight": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "length": {
+            "type": "number"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array"
+          },
+          "contains": {
+            "type": "object"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "tax_id": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "object"
+          }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "postal_code": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "street_number": {
+            "type": "string"
+          },
+          "is_residencial_address": {
+            "type": "boolean"
+          },
+          "complement_address": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

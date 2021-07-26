@@ -6,7 +6,7 @@ const payload = require('./payload.json');
 
 const app = require('../src/server');
 
-describe('GET /api/v1/shipments/1', () => {
+describe('GET /api/v1/shipments', () => {
   it('get a list of shipments', (done) => {
     request(app)
       .get('/api/v1/shipments')

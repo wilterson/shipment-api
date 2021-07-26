@@ -16,6 +16,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
+require('./database');
+
 app.get('/', (req, res) => {
   res.json({
     message: 'Shipments API'
@@ -26,10 +28,6 @@ app.use('/api/v1', routes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
-
-module.exports = app;
-
-require('./database');
 
 const port = process.env.PORT || 3300;
 app.listen(port, () => {
