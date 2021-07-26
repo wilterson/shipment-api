@@ -13,6 +13,10 @@
     {
       "url": "http://localhost:3000/api/v1",
       "description": "Local Environment"
+    },
+    {
+      "url": "https://shipment-api.herokuapp.com/api/v1",
+      "description": "Live Demo Environment"
     }
   ],
   "paths": {
